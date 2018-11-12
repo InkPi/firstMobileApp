@@ -7,28 +7,50 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
+//import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+// const instructions = Platform.select({
+//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+//   android:
+//     'Double tap R on your keyboard to reload,\n' +
+//     'Shake or press menu button for dev menu',
+// });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {}
+    this.state.customStyles = {
+      opacity: 0
+    }
+
+    setInterval(() => {
+      this.setState({
+        customStyles: {
+          opacity: 1
+        }
+      })
+    }, 1000)
+  }
+
   render() {
+    const imageInfo = {
+      uri: 'https://calculate-this.com/sites/default/files/styles/large/public/field/image/pizza.png?itok=yGvUTlve'
+    }
+    // <Text style={styles.instructions}>To get started, edit App.js</Text>
+    // <Text style={styles.instructions}>{instructions}</Text>
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Hello! Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={[styles.welcome, this.state.customStyles]}>Hello! Welcome to React Native!</Text>
+        <Image source={imageInfo} style={{width: 400, height: 400}}/>
       </View>
     );
   }
 }
 
+/*React Native works on flexbox system*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
