@@ -6,8 +6,10 @@
  * @flow
  */
 
+ //https://facebook.github.io/react-native/docs/textinput
+
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput} from 'react-native';
 //import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 
 // const instructions = Platform.select({
@@ -25,6 +27,8 @@ export default class App extends Component {
     this.state.customStyles = {
       color: 'red'
     }
+    this.handleChangeText = this.handleChangeText.bind(this)
+     //bind this
 
     setInterval(() => {
       if (this.state.customStyles.color == 'red') {
@@ -41,6 +45,7 @@ export default class App extends Component {
       })
     }
     }, 1000)
+
   }
 
   render() {
@@ -55,7 +60,9 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.half1}>
-          <Text style={[styles.welcome, this.state.customStyles]}>Hello! Welcome to React Native!</Text>
+          <Text style={[styles.welcome, this.state.customStyles]}>Hello! Do you like Pizza or Donut?</Text>
+          <TextInput style={{borderBottomColor: '#000000',
+       borderBottomWidth: 1 }} onChangeText={this.handleChangeText}/>
         </View>
         <View style={styles.half2}>
           <View style={[styles.half21, styles.half2x]}>
