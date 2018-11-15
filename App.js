@@ -23,15 +23,23 @@ export default class App extends Component {
     super()
     this.state = {}
     this.state.customStyles = {
-      opacity: 0
+      color: 'red'
     }
 
     setInterval(() => {
+      if (this.state.customStyles.color == 'red') {
+        this.setState({
+          customStyles: {
+            color: 'green'
+          }
+        })
+    } else {
       this.setState({
         customStyles: {
-          opacity: 1
+          color: 'red'
         }
       })
+    }
     }, 1000)
   }
 
@@ -62,6 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color: 'blue',
   },
   instructions: {
     textAlign: 'center',
