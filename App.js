@@ -23,12 +23,14 @@ export default class App extends Component {
 
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      value: "Edit Me!"
+    }
     this.state.customStyles = {
       color: 'red'
     }
     this.handleChangeText = this.handleChangeText.bind(this)
-     //bind this
+     //bind; force follow this of this class only all time
 
     setInterval(() => {
       if (this.state.customStyles.color == 'red') {
@@ -48,6 +50,13 @@ export default class App extends Component {
 
   }
 
+  handleChangeText(props) {
+    //access this func state: this.state
+    this.setState({
+      value: props
+    })
+  }
+
   render() {
     const imageInfo = {
       uri: 'https://calculate-this.com/sites/default/files/styles/large/public/field/image/pizza.png?itok=yGvUTlve'
@@ -61,8 +70,9 @@ export default class App extends Component {
       <View style={styles.container}>
         <View style={styles.half1}>
           <Text style={[styles.welcome, this.state.customStyles]}>Hello! Do you like Pizza or Donut?</Text>
-          <TextInput style={{borderBottomColor: '#000000',
+          <TextInput defaultValue={this.state.value} style={{borderBottomColor: '#000000',
        borderBottomWidth: 1 }} onChangeText={this.handleChangeText}/>
+            <Text>You are writing {this.state.value}</Text>
         </View>
         <View style={styles.half2}>
           <View style={[styles.half21, styles.half2x]}>
