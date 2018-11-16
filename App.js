@@ -24,7 +24,9 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      value: "Edit Me!"
+      value: "Edit Me!",
+      username: "username",
+      password: "password"
     }
     this.state.customStyles = {
       color: 'red'
@@ -66,13 +68,15 @@ export default class App extends Component {
     }
     // <Text style={styles.instructions}>To get started, edit App.js</Text>
     // <Text style={styles.instructions}>{instructions}</Text>
+    //<Text>You are writing {this.state.value}</Text>
     return (
       <View style={styles.container}>
         <View style={styles.half1}>
           <Text style={[styles.welcome, this.state.customStyles]}>Hello! Do you like Pizza or Donut?</Text>
-          <TextInput defaultValue={this.state.value} style={{borderBottomColor: '#000000',
-       borderBottomWidth: 1 }} onChangeText={this.handleChangeText}/>
-            <Text>You are writing {this.state.value}</Text>
+          <Text style={{marginTop: 13}}>Username: </Text>
+            <TextInput defaultValue={this.state.username} style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleChangeText}/>
+          <Text style={{paddingTop: 10}}>Password: </Text>
+            <TextInput defaultValue={this.state.password} style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleChangeText}/>
         </View>
         <View style={styles.half2}>
           <View style={[styles.half21, styles.half2x]}>
@@ -101,7 +105,8 @@ const styles = StyleSheet.create({
   },
   half1: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#f7e3e6',
+    padding: 20,
   },
   half2: {
     flex: 2,
@@ -130,4 +135,7 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  textinputBorder: {
+    borderBottomColor: '#d36475',
+    borderBottomWidth: 1 }
 });
