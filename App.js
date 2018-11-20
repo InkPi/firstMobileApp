@@ -9,7 +9,7 @@
  //https://facebook.github.io/react-native/docs/textinput
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, TextInput} from 'react-native';
+import {StyleSheet, Text, View, Image, TextInput, Button} from 'react-native';
 //import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 
 // const instructions = Platform.select({
@@ -24,21 +24,21 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      value: "Edit Me!",
-      username: "username",
-      password: "password"
+      // username: "",
+      // password: ""
     }
     this.state.customStyles = {
       color: 'red'
     }
-    this.handleChangeText = this.handleChangeText.bind(this)
+    this.buttonPressed = this.buttonPressed.bind(this)
+    //this.handleChangeText = this.handleChangeText.bind(this)
      //bind; force follow this of this class only all time
 
     setInterval(() => {
       if (this.state.customStyles.color == 'red') {
         this.setState({
           customStyles: {
-            color: 'green'
+            color: 'brown'
           }
         })
     } else {
@@ -49,14 +49,22 @@ export default class App extends Component {
       })
     }
     }, 1000)
+  }
+  buttonPressed() {
 
   }
+  // handleChangeText(props) {
+  //   //access this func state: this.state
+  //   this.setState({
+  //     value: props
+  //   })
+  // }
+  handleUsernameChanges(newText) {
+    console.log('Username is ${newText}')
+  }
 
-  handleChangeText(props) {
-    //access this func state: this.state
-    this.setState({
-      value: props
-    })
+  handlePasswordChanges(newText) {
+    console.log('Password is ${newText}')
   }
 
   render() {
@@ -69,15 +77,19 @@ export default class App extends Component {
     // <Text style={styles.instructions}>To get started, edit App.js</Text>
     // <Text style={styles.instructions}>{instructions}</Text>
     //<Text>You are writing {this.state.value}</Text>
+    // <TextInput defaultValue={this.state.username} style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleChangeText}/>
     return (
       <View style={styles.container}>
+
         <View style={styles.half1}>
-          <Text style={[styles.welcome, this.state.customStyles]}>Hello! Do you like Pizza or Donut?</Text>
+          <Text style={[styles.welcome, this.state.customStyles]}>Which comfort food better? Pizza or Donut? Vote Please</Text>
           <Text style={{marginTop: 13}}>Username: </Text>
-            <TextInput defaultValue={this.state.username} style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleChangeText}/>
+            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleUsernameChanges}/>          
           <Text style={{paddingTop: 10}}>Password: </Text>
-            <TextInput defaultValue={this.state.password} style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleChangeText}/>
+            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handlePasswordChanges}/>
+            <Button title={"submit"} onPress={this.buttonPressed}/>
         </View>
+
         <View style={styles.half2}>
           <View style={[styles.half21, styles.half2x]}>
             <Text style={{color: 'white'}}>Pizza</Text>
