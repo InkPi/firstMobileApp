@@ -7,3 +7,6 @@
 - {{}} is for inline coding
 - {[]} for multiple properties
 - More on Flexbox and how react use them for responsive styles
+- ref. It is placeholder and id. Id stay immutable.
+  -- <TextInput ref={input => this._username = input} />
+  -- _username is id.

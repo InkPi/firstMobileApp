@@ -50,22 +50,23 @@ export default class App extends Component {
     }
     }, 1000)
   }
-  buttonPressed() {
 
+  buttonPressed() {
+    //Get username and password
+    //console.log(this._username, this._password)
+    const username = this._username._lastNativeText
+    const password = this._password._lastNativeText
+
+    console.log(username, password)
   }
+
   // handleChangeText(props) {
   //   //access this func state: this.state
   //   this.setState({
   //     value: props
   //   })
   // }
-  handleUsernameChanges(newText) {
-    console.log('Username is ${newText}')
-  }
 
-  handlePasswordChanges(newText) {
-    console.log('Password is ${newText}')
-  }
 
   render() {
     const imageInfo = {
@@ -84,9 +85,11 @@ export default class App extends Component {
         <View style={styles.half1}>
           <Text style={[styles.welcome, this.state.customStyles]}>Which comfort food better? Pizza or Donut? Vote Please</Text>
           <Text style={{marginTop: 13}}>Username: </Text>
-            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handleUsernameChanges}/>          
+            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]}
+                        ref = { input => this._username = input }/>
           <Text style={{paddingTop: 10}}>Password: </Text>
-            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]} onChangeText={this.handlePasswordChanges}/>
+            <TextInput style={[styles.textinputBorder, {paddingTop: 8}]}
+                        ref = { input => this._password = input }/>
             <Button title={"submit"} onPress={this.buttonPressed}/>
         </View>
 
